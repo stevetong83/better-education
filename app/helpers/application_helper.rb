@@ -8,11 +8,8 @@ module ApplicationHelper
     end
   end
 
-  def college_stylesheet
-
+  def partial
+    @partial if @partial.present?
   end
 
-  def college_javascript
-
-  end
 end

@@ -3,11 +3,9 @@
   %head
     %title= page_title
     = stylesheet_link_tag    "application"
-    = stylesheet_link_tag   "partials/#{college_stylesheet}"
+    = stylesheet_link_tag   "partials/#{partial}"
     = javascript_include_tag "application"
-    = javascript_include_tag "partials/#{college_javascript}"
+    = javascript_include_tag "partials/#{partial}"
     = csrf_meta_tags
   %body
-    .row
-      .container
-        = yield
+    = yield
