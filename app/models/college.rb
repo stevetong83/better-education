@@ -8,6 +8,10 @@ class College
   field :partial
   field :website
 
+  #about
+  field :mascot
+  field :conference
+
   # Geography
   field :city
   field :state
