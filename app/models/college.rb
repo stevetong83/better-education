@@ -5,9 +5,16 @@ class College
 
   field :name
   slug :name
+  field :partial
   field :website
 
-  validates :name, uniqueness: true
-  validates :name, presence: true
+  #Booleans
+  field :paid,    type: Boolean,    default: false
+  field :custom,  type: Boolean,    default: false
+
+  validates :name,    presence: true
+  validates :name,    uniqueness: true
+  validate :partial,  uniqueness: true
+  
 
 end

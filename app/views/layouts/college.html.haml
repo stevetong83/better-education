@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title= page_title
+    = stylesheet_link_tag    "application"
+    = stylesheet_link_tag   "partials/#{college_stylesheet}"
+    = javascript_include_tag "application"
+    = javascript_include_tag "partials/#{college_javascript}"
+    = csrf_meta_tags
+  %body
+    .row
+      .container
+        = yield
