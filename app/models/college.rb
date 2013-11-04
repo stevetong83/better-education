@@ -10,7 +10,7 @@ class College
 
   #about
   field :mascot
-  field :conference
+  field :conference_id
 
   # Geography
   field :city
@@ -25,6 +25,8 @@ class College
   field :headings_color,    default: "#000"
   field :text_color,        default: "#000"
   field :logo
+
+  belongs_to :conference
 
   validates :name,    presence: true
   validates :name,    uniqueness: true
