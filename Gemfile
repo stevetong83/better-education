@@ -32,12 +32,15 @@ gem 'mongoid', git: 'https://github.com/mongoid/mongoid.git'
 gem 'bson_ext'
 gem 'mongoid_slug'
 
-gem "twitter-bootstrap-rails", "~> 2.2.8"
 gem 'simple_form'
 gem "therubyracer"
 gem "less-rails"
 
 gem 'devise'
+
+# Want to add active admin once it works for rails 4 and mongoid. Can't get it work right now.
+# gem 'activeadmin', github: 'gregbell/active_admin'
+# gem 'activeadmin-mongoid',  git: 'git://github.com/elia/activeadmin-mongoid.git'
 
 gem 'json'
 gem 'jbuilder', '~> 1.2'
@@ -48,4 +51,3 @@ gem 'exception_notification'
 group :doc do
   gem 'sdoc', require: false
 end
-

@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
     # Temporary testing
     @college_free = College.first
-    @college_paid = College.last
+    @college_paid = College.custom.first
   end 
 
 end

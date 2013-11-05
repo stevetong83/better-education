@@ -1,5 +1,11 @@
 - if @college.custom
   = render "colleges/partials/#{@partial}"
 - else
-
-  %h1= @college.name
+  .container
+    %h1= @college.name
+    %p
+      = @college.website
+      = @college.city
+      = @college.state
+      = @college.mascot
+      = @college.conference.name

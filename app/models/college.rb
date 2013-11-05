@@ -31,6 +31,8 @@ class College
   validates :name,    presence: true
   validates :name,    uniqueness: true
   validate :partial,  uniqueness: true
+
+  scope :custom, -> { where(custom: true) }
   
 
 end
