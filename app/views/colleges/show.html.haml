@@ -1,8 +1,19 @@
 - if @college.custom
   = render "colleges/partials/#{@partial}"
 - else
-  .container
+  :sass
+    body
+      background-color: #{@college.background_color}
+
+    h1, h2, h3, h4, h5
+      color: #{@college.headings_color}
+
+    p
+      color: #{@college.text_color}
+      
+  .container#page
     %h1= @college.name
+    = image_tag('header-break.png')
     %p
       = @college.website
       = @college.city
