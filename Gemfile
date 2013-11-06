@@ -33,8 +33,7 @@ gem 'bson_ext'
 gem 'mongoid_slug'
 
 gem 'simple_form'
-gem "therubyracer"
-gem "less-rails"
+gem 'roadie'
 
 gem 'devise'
 

@@ -6,7 +6,10 @@ class College
   field :name
   slug :name
   field :partial
+
+  # University website links
   field :website
+  field :athletics_website
 
   #about
   field :mascot
@@ -19,6 +22,7 @@ class College
   # Booleans
   field :paid,    type: Boolean,    default: false
   field :custom,  type: Boolean,    default: false
+  field :live,    type: Boolean,    default: false
 
   # Styles
   field :background_color,  default: "#fff"
@@ -27,6 +31,8 @@ class College
   field :logo
 
   belongs_to :conference
+  has_many :college_sports, dependent: :destroy
+  has_many :links, dependent: :destroy
 
   validates :name,    presence: true
   validates :name,    uniqueness: true
