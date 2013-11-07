@@ -12,11 +12,20 @@
       color: #{@college.text_color}
       
   .container#page
-    %h1= @college.name
-    = image_tag('header-break.png')
-    %p
-      = @college.website
-      = @college.city
-      = @college.state
-      = @college.mascot
-      = @college.conference.name
+    .row
+      %h1= @college.name
+      = image_tag('header-break.png')
+      %p
+        = @college.website
+        = @college.city
+        = @college.state
+        = @college.mascot
+        = @college.conference.name
+
+    .row
+      %h2 Sports
+      = render 'sports'
+
+    .row
+      %h2 Links
+      = render 'links'
