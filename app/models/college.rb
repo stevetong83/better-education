@@ -12,12 +12,19 @@ class College
   field :athletics_website
 
   #about
+  field :description
   field :mascot
   field :conference_id
 
   # Geography
   field :city
   field :state
+
+  # Social
+  field :facebook
+  field :twitter
+  field :youtube
+  field :flickr
 
   # Booleans
   field :paid,    type: Boolean,    default: false
@@ -31,14 +38,23 @@ class College
   field :logo
 
   belongs_to :conference
+
   has_many :college_sports, dependent: :destroy
   has_many :links, dependent: :destroy
+  has_many :tuitions, dependent: :destroy
+  has_many :awards, dependent: :destroy
+
+  has_and_belongs_to_many :majors, inverse_of: :majors
 
   validates :name,    presence: true
   validates :name,    uniqueness: true
   validate :partial,  uniqueness: true
 
   scope :custom, -> { where(custom: true) }
+
+  def to_param
+    slug
+  end
   
 
 end

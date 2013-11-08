@@ -1,0 +1,9 @@
+%ul#social
+  -if @college.facebook.present?
+    %li= link_to "@college.facebook", "#"
+  -if @college.twitter.present?
+    %li= link_to "@college.twitter", "#"
+  -if @college.youtube.present?
+    %li= link_to "@college.youtube", "#"
+  -if @college.flickr.present?
+    %li= link_to "@college.flickr", "#"
