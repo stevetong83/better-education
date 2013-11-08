@@ -21,6 +21,7 @@ group :development, :test do
 end
 
 gem 'thin'
+gem 'newrelic_rpm'
 
 gem 'haml'
 gem 'sass-rails', '~> 4.0.0'
