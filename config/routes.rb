@@ -6,4 +6,6 @@ BetterEducation::Application.routes.draw do
 
   resources :colleges
 
+  get "/results", to: "pages#results", as: :results
+
 end

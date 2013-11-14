@@ -18,7 +18,7 @@ class College
 
   # Geography
   field :city
-  field :state
+  field :state_id
 
   # Social
   field :facebook
@@ -37,7 +37,8 @@ class College
   field :text_color,        default: "#000"
   field :logo
 
-  belongs_to :conference
+  belongs_to :conference, index: true
+  belongs_to :state, index: true
 
   has_many :college_sports, dependent: :destroy
   has_many :links, dependent: :destroy
@@ -52,9 +53,21 @@ class College
 
   scope :custom, -> { where(custom: true) }
 
+
   def to_param
     slug
   end
-  
 
+  def self.search(state, conference)
+    if state.present? || conference.present?
+      colleges = College.order_by('name ASC')
+      colleges = self.where(state: State.where(name: state).first.id) if state.present?
+      colleges = colleges.where(conference: Conference.where(name: conference).first.id) if conference.present?
+      colleges
+    else
+      self.all
+    end
+
+  end
+  
 end

@@ -1,13 +1,7 @@
-%h1 Welcome to Better Education
+%h2 Search
 
 = form_tag results_path, method: :get do
 
   = select_tag :state, options_for_select(us_states), include_blank: true
   = select_tag :conference, options_for_select(conferences), include_blank: true
   = submit_tag 'search', class: 'btn'
-
-%p
-  = link_to "College 1 Free", college_path(@college_free)
-
-%p
-  = link_to "College 2 Paid", college_path(@college_paid)

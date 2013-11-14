@@ -13,17 +13,22 @@
       
   .container#page
     .row
-      %h1= @college.name
-      = image_tag('header-break.png')
-      %p
-        = @college.website
-        = @college.city
-        = @college.state
-        = @college.mascot
-        = @college.conference.name
+      .col-lg-12
+        %h1= @college.name
+        = image_tag('header-break.png')
+        %p
+          = @college.website
+          = @college.city
+          = @college.state.name
+          = @college.mascot
+          = @college.conference.name
 
-      %p
-        = render 'social'
+        %p
+          = render 'social'
+
+    .row
+      .col-lg-12
+        = render 'navigation'
 
     .row
       %h2 Tuition

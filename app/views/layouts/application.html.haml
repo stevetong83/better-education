@@ -7,13 +7,16 @@
     = csrf_meta_tags
   %body
     .row
-      .nav
-        #logo.pull-left
-          = link_to "Better Education", root_path
-        .pull-right
-          = render 'shared/navigation'
+      .col-lg-12
+        .nav
+          #logo.pull-left
+            = link_to "Better Education", root_path
+          .pull-right
+            = render 'shared/navigation'
       .container#content
         = yield
 
       .footer
-        = render 'shared/footer'
+        .row
+          .col-lg-12
+            = render 'shared/footer'
