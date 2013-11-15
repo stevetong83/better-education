@@ -2,6 +2,7 @@
 
 = form_tag results_path, method: :get do
 
+  = select_tag :college, options_for_select(colleges), include_blank: true
   = select_tag :state, options_for_select(us_states), include_blank: true
   = select_tag :conference, options_for_select(conferences), include_blank: true
   = submit_tag 'search', class: 'btn'

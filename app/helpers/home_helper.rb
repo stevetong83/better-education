@@ -4,6 +4,10 @@ module HomeHelper
   	State.all.map(&:name)
   end
 
+  def colleges
+    College.all.map(&:name)
+  end
+
   def conferences
     Conference.all.map do |conference|
       if conference.abbreviation

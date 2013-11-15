@@ -52,6 +52,7 @@ class College
 
   scope :custom, -> { where(custom: true) }
   scope :abc, -> { order_by('name ASC') }
+  scope :school -> (school) {where(name: school)}
   scope :state, -> (state) { where(state: state) }
   scope :conference, -> (conference) { where(conference: conference) }
 
@@ -60,10 +61,11 @@ class College
     slug
   end
 
-  def self.search(state, conference)
-    if state.present? || conference.present?
+  def self.search(school, state, conference)
+    if school.present? || state.present? || conference.present?
       colleges = College.abc
-      colleges = self.state(State.where(name: state).first.id) if state.present?
+      colleges = colleges.school(school) if school.present?
+      colleges = colleges.state(State.where(name: state).first.id) if state.present?
       colleges = colleges.conference(Conference.where(name: conference).first.id) if conference.present?
       colleges
     else
