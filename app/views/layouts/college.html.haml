@@ -2,10 +2,12 @@
 %html
   %head
     %title= page_title
+    %script{src: "http://maps.google.com/maps/api/js?sensor=false"}
     = stylesheet_link_tag    "application"
-    = stylesheet_link_tag   "partials/#{partial}"
+    = stylesheet_link_tag   "partials/#{partial}" if @college.custom
     = javascript_include_tag "application"
-    = javascript_include_tag "partials/#{partial}"
+    = javascript_include_tag "partials/#{partial}" if @college.custom
     = csrf_meta_tags
+
   %body
     = yield

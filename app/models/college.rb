@@ -34,24 +34,26 @@ class College
   # Styles
   field :background_color,  default: "#fff"
   field :headings_color,    default: "#000"
-  field :text_color,        default: "#000"
   field :logo
 
-  belongs_to :conference, index: true
-  belongs_to :state, index: true
+  belongs_to :conference,     index: true
+  belongs_to :state,          index: true
 
-  has_many :college_sports, dependent: :destroy
-  has_many :links, dependent: :destroy
-  has_many :tuitions, dependent: :destroy
-  has_many :awards, dependent: :destroy
+  has_many :college_sports,   dependent: :destroy
+  has_many :links,            dependent: :destroy
+  has_many :tuitions,         dependent: :destroy
+  has_many :awards,           dependent: :destroy
 
   has_and_belongs_to_many :majors, inverse_of: :majors
 
-  validates :name,    presence: true
-  validates :name,    uniqueness: true
-  validate :partial,  uniqueness: true
+  validates :name,      presence: true
+  validates :name,      uniqueness: true
+  validates :partial,   uniqueness: true
 
   scope :custom, -> { where(custom: true) }
+  scope :abc, -> { order_by('name ASC') }
+  scope :state, -> (state) { where(state: state) }
+  scope :conference, -> (conference) { where(conference: conference) }
 
 
   def to_param
@@ -60,12 +62,12 @@ class College
 
   def self.search(state, conference)
     if state.present? || conference.present?
-      colleges = College.order_by('name ASC')
-      colleges = self.where(state: State.where(name: state).first.id) if state.present?
-      colleges = colleges.where(conference: Conference.where(name: conference).first.id) if conference.present?
+      colleges = College.abc
+      colleges = self.state(State.where(name: state).first.id) if state.present?
+      colleges = colleges.conference(Conference.where(name: conference).first.id) if conference.present?
       colleges
     else
-      self.all
+      self.abc
     end
 
   end

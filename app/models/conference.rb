@@ -8,4 +8,6 @@ class Conference
   has_many :colleges
 
   validates :name, presence: true
+
+  default_scope order_by('name ASC')
 end

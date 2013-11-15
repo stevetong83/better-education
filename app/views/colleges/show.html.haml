@@ -8,8 +8,7 @@
     h1, h2, h3, h4, h5
       color: #{@college.headings_color}
 
-    p
-      color: #{@college.text_color}
+    
       
   .container#page
     .row
@@ -31,6 +30,19 @@
         = render 'navigation'
 
     .row
+      .col-lg-6
+        %h1 Location
+        #map
+
+    
+
+    .row
+      .col-lg-12
+        %h3 Sample Text
+        %p
+          Bacon ipsum dolor sit amet strip steak short loin short ribs ham, pork kielbasa ground round. Short ribs sausage ball tip pig chuck. Pork loin shankle short loin t-bone, chuck drumstick kevin chicken sirloin turducken cow tongue bacon filet mignon boudin. Biltong turducken pork loin, chuck ball tip boudin ground round brisket spare ribs t-bone pancetta kielbasa tenderloin chicken strip steak. Andouille sirloin chuck, tongue turducken tenderloin salami strip steak short loin rump. Chicken ground round leberkas pancetta andouille shank biltong, short loin beef pork loin fatback beef ribs ribeye shankle.
+
+    .row
       %h2 Tuition
       = render 'tuition'
 
@@ -39,5 +51,18 @@
       = render 'sports'
 
     .row
+      .col-lg-12
+        %h2 Awards
+        = render 'awards'
+
+    .row
       %h2 Links
       = render 'links'
+
+  :coffee
+    $("#map").goMap
+      zoom: 12
+      maptype: "ROADMAP"
+      address: "#{@college.name}"
+
+    $.goMap.createMarker address: "#{@college.name}"

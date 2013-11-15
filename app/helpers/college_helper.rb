@@ -9,4 +9,5 @@ module CollegeHelper
         ['Junior College']
       ]
   end
+
 end
